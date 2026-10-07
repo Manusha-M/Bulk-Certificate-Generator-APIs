@@ -1,0 +1,22 @@
+[project]
+name = "bulk-certificate-generator"
+version = "1.0.0"
+description = "Backend API that generates PDF certificates in bulk from one predefined template."
+requires-python = ">=3.12"
+# Runtime dependencies are pinned in requirements.txt (test tools in requirements-dev.txt).
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"
+filterwarnings = [
+    # Raised inside Starlette's TestClient (third-party), not by this project.
+    "ignore:The anyio.abc.BlockingPortal alias is deprecated:DeprecationWarning",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
